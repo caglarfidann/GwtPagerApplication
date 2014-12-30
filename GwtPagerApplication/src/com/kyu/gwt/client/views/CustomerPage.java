@@ -1,6 +1,7 @@
 package com.kyu.gwt.client.views;
 
 import java.util.ArrayList;
+
 import com.google.gwt.cell.client.ButtonCell;
 import com.google.gwt.cell.client.FieldUpdater;
 import com.google.gwt.core.client.GWT;
@@ -10,6 +11,7 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.cellview.client.CellTable;
 import com.google.gwt.user.cellview.client.Column;
 import com.google.gwt.user.cellview.client.TextColumn;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 import com.kyu.gwt.client.presenters.CustomerPresenter;
@@ -18,6 +20,7 @@ import com.kyu.gwt.shared.Customer;
 public class CustomerPage extends Composite implements
 		CustomerPresenter.Display {
 	private CustomerPresenter customerPresenter;
+	public static Customer SelectedCustomer;
 	private static CustomerPageUiBinder uiBinder = GWT
 			.create(CustomerPageUiBinder.class);
 
@@ -84,7 +87,8 @@ public class CustomerPage extends Composite implements
 		buttonColumn.setFieldUpdater(new FieldUpdater<Customer, String>() {
 			@Override
 			public void update(int index, Customer object, String value) {
-
+				SelectedCustomer=object;
+				Window.alert(object.getCustomerID());
 			}
 		});
 
@@ -95,7 +99,12 @@ public class CustomerPage extends Composite implements
 		customerCellTable.addColumn(buttonColumn,SafeHtmlUtils.fromSafeConstant("<br/>"));
 		customerCellTable.setRowCount(customerList.size(), true);
 		customerCellTable.setRowData(0, customerList);
+	}
 
+	@Override
+	public Customer getSelectedCustomer() {
+		// TODO Auto-generated method stub
+		return SelectedCustomer;
 	}
 
 }

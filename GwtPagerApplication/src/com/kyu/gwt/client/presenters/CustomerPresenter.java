@@ -20,6 +20,8 @@ public class CustomerPresenter implements Presenter {
 		public void setPresenter(CustomerPresenter customerPresenter);
 		
 		public void fillCustomerTable(ArrayList<Customer> personList);
+		
+		public Customer getSelectedCustomer();
 	}
 	
 	public CustomerPresenter(ArrayList<Customer> customerList,Display view) {
