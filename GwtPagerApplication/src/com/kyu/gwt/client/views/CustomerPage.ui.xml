@@ -1,9 +1,14 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
-	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:c="urn:import:com.google.gwt.user.cellview.client">
 	<ui:style>
-	
 	</ui:style>
 	<g:HTMLPanel>
+	<center>
+	<g:Label ui:field="customerLabel">---CUSTOMER---</g:Label>
+	<br></br><br></br>
+	<c:CellTable ui:field="customerCellTable"></c:CellTable>
+	</center>
 	</g:HTMLPanel>
 </ui:UiBinder> 
