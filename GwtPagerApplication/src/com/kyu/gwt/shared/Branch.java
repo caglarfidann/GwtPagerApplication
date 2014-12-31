@@ -1,5 +1,7 @@
 package com.kyu.gwt.shared;
 
+import java.util.ArrayList;
+
 public class Branch {
 	private String BranchID;
 	private String BranchName;
@@ -24,5 +26,16 @@ public class Branch {
 		BranchLocation = branchLocation;
 	}
 	
-	
+	public ArrayList<Branch> addBranchList(){
+		Branch branch;
+		ArrayList<Branch> branch_temp=new ArrayList<Branch>();
+		for(int i=1;i<6;i++){
+			branch = new Branch();
+			branch.setBranchID("10"+(i));
+			branch.setBranchName("Branch"+i);
+			branch.setBranchLocation("City"+i);
+			branch_temp.add(branch);
+		}
+		return branch_temp;
+	}
 }

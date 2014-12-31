@@ -42,7 +42,7 @@ public class Customer {
 	public ArrayList<Customer> addCustomerList(){
 		Customer customer;
 		ArrayList<Customer> Customer_temp=new ArrayList<Customer>();
-		for(int i=1;i<6;i++){
+		for(int i=1;i<25;i++){
 			customer = new Customer();
 			customer.setCustomerID("100"+(i));
 			customer.setCustomerName("Name"+i);

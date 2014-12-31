@@ -10,13 +10,14 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.cellview.client.CellTable;
 import com.google.gwt.user.cellview.client.Column;
+import com.google.gwt.user.cellview.client.SimplePager;
 import com.google.gwt.user.cellview.client.TextColumn;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.view.client.ListDataProvider;
 import com.kyu.gwt.client.presenters.CustomerPresenter;
-import com.kyu.gwt.client.presenters.Presenter;
 import com.kyu.gwt.shared.Customer;
 
 public class CustomerPage extends Composite implements
@@ -35,7 +36,9 @@ public class CustomerPage extends Composite implements
 
 	@UiField
 	CellTable<Customer> customerCellTable;
-
+	@UiField
+	HTMLPanel htmlPanel;
+	
 	@Override
 	public void clear() {
 		// TODO Auto-generated method stub
@@ -79,28 +82,52 @@ public class CustomerPage extends Composite implements
 			}
 		};
 
-		Column<Customer, String> buttonColumn = new Column<Customer, String>(
+		Column<Customer, String> BranchbuttonColumn = new Column<Customer, String>(
 				new ButtonCell()) {
 			@Override
 			public String getValue(Customer object) {
-				return "branch";
+				return "Branch";
 			}
 		};
-		buttonColumn.setFieldUpdater(new FieldUpdater<Customer, String>() {
+		BranchbuttonColumn.setFieldUpdater(new FieldUpdater<Customer, String>() {
 			@Override
 			public void update(int index, Customer object, String value) {
 				SelectedCustomer=object;
-				Window.alert(object.getCustomerID());
+				BranchPopUpPage asd=new BranchPopUpPage(SelectedCustomer);
+				asd.show();
+				//Window.alert(object.getCustomerID());
 			}
 		});
-
+		
+		Column<Customer, String> DisplaybuttonColumn = new Column<Customer, String>(
+				new ButtonCell()) {
+			@Override
+			public String getValue(Customer object) {
+				return "Display";
+			}
+		};
+		DisplaybuttonColumn.setFieldUpdater(new FieldUpdater<Customer, String>() {
+			@Override
+			public void update(int index, Customer object, String value) {
+				SelectedCustomer=object;
+				Window.alert(object.getCustomerBranch());
+			}
+		});
 		customerCellTable.addColumn(CustomerID, "Customer ID");
 		customerCellTable.addColumn(CustomerName, "Customer Name");
 		customerCellTable.addColumn(CustomerSurname, "CustomerSurname");
 		customerCellTable.addColumn(CustomerMail, "Customer E-Mail");
-		customerCellTable.addColumn(buttonColumn,SafeHtmlUtils.fromSafeConstant("<br/>"));
+		customerCellTable.addColumn(BranchbuttonColumn,SafeHtmlUtils.fromSafeConstant("<br/>"));
+		customerCellTable.addColumn(DisplaybuttonColumn,SafeHtmlUtils.fromSafeConstant("<br/>"));
 		customerCellTable.setRowCount(customerList.size(), true);
 		customerCellTable.setRowData(0, customerList);
+		ListDataProvider<Customer> dataProvider = new ListDataProvider<Customer>();
+		dataProvider.addDataDisplay(customerCellTable);
+	    dataProvider.setList(customerList);
+	    SimplePager pager = new SimplePager();
+	    pager.setDisplay(customerCellTable);
+	    pager.setPageSize(7);
+	    htmlPanel.add(pager);
 	}
 
 	@Override

@@ -4,7 +4,7 @@
 	xmlns:c="urn:import:com.google.gwt.user.cellview.client">
 	<ui:style>
 	</ui:style>
-	<g:HTMLPanel>
+	<g:HTMLPanel ui:field="htmlPanel">
 	<center>
 	<g:Label ui:field="customerLabel">---CUSTOMER---</g:Label>
 	<br></br><br></br>
