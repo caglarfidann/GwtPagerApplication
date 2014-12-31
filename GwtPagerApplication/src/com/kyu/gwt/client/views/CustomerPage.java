@@ -13,8 +13,10 @@ import com.google.gwt.user.cellview.client.Column;
 import com.google.gwt.user.cellview.client.TextColumn;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.kyu.gwt.client.presenters.CustomerPresenter;
+import com.kyu.gwt.client.presenters.Presenter;
 import com.kyu.gwt.shared.Customer;
 
 public class CustomerPage extends Composite implements
