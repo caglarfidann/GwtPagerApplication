@@ -9,6 +9,10 @@
 	<g:Label ui:field="customerLabel">---CUSTOMER---</g:Label>
 	<br></br><br></br>
 	<c:CellTable ui:field="customerCellTable"></c:CellTable>
+	<div>
+	<g:AbsolutePanel ui:field="absolutePanel">
+	</g:AbsolutePanel>
+	</div>
 	</center>
 	</g:HTMLPanel>
 </ui:UiBinder> 

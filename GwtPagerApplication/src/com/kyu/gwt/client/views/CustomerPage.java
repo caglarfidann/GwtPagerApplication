@@ -13,12 +13,14 @@ import com.google.gwt.user.cellview.client.Column;
 import com.google.gwt.user.cellview.client.SimplePager;
 import com.google.gwt.user.cellview.client.TextColumn;
 import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.ui.AbsolutePanel;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.view.client.ListDataProvider;
 import com.kyu.gwt.client.presenters.CustomerPresenter;
 import com.kyu.gwt.shared.Customer;
+import com.sun.org.apache.xpath.internal.operations.Div;
 
 public class CustomerPage extends Composite implements
 		CustomerPresenter.Display {
@@ -38,6 +40,8 @@ public class CustomerPage extends Composite implements
 	CellTable<Customer> customerCellTable;
 	@UiField
 	HTMLPanel htmlPanel;
+	@UiField
+	AbsolutePanel absolutePanel;
 	
 	@Override
 	public void clear() {
@@ -93,8 +97,8 @@ public class CustomerPage extends Composite implements
 			@Override
 			public void update(int index, Customer object, String value) {
 				SelectedCustomer=object;
-				BranchPopUpPage asd=new BranchPopUpPage(SelectedCustomer);
-				asd.show();
+				BranchPopUpPage branch=new BranchPopUpPage(SelectedCustomer);
+				branch.show();
 				//Window.alert(object.getCustomerID());
 			}
 		});
@@ -110,7 +114,7 @@ public class CustomerPage extends Composite implements
 			@Override
 			public void update(int index, Customer object, String value) {
 				SelectedCustomer=object;
-				Window.alert(object.getCustomerBranch());
+				Window.alert(SelectedCustomer.getCustomerBranch());
 			}
 		});
 		customerCellTable.addColumn(CustomerID, "Customer ID");
@@ -127,7 +131,8 @@ public class CustomerPage extends Composite implements
 	    SimplePager pager = new SimplePager();
 	    pager.setDisplay(customerCellTable);
 	    pager.setPageSize(7);
-	    htmlPanel.add(pager);
+	    pager.addStyleName("gwt-Center-Pager");
+	    absolutePanel.add(pager);
 	}
 
 	@Override

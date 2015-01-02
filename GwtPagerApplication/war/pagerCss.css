@@ -2,12 +2,9 @@ body{
    text-align: center;
    background-color: window;
 }
-.gwt-Bold-CheckBox{
+.gwt-Bold-DialogBox{
 	border:5px;
 	background-color:gray;
 	border-color:black;
 	font-weight: bolder;
-}
-.gwt-Bold-Pager{
-	text-align: center;
 }

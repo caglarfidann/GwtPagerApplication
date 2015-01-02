@@ -44,7 +44,7 @@ public class BranchPopUpPage extends DialogBox {
 	AbsolutePanel absolutePanel;
 	public void onInitialize(final DialogBox box){		
 		box.center();
-		box.setStyleName("gwt-Bold-CheckBox");
+		box.setStyleName("gwt-Bold-DialogBox");
 		box.setText("BRANCH");
 		absolutePanel.setSize("300px", "200px");
 		absolutePanel.add(customerLabel,15,10);
@@ -56,7 +56,7 @@ public class BranchPopUpPage extends DialogBox {
 		absolutePanel.add(selectButton,60,70);
 		absolutePanel.add(backButton,160,70);
 		absolutePanel.add(resultLabel,70,100);
-		box.setAutoHideEnabled(true);	
+		box.setAutoHideEnabled(false);	
 		box.setGlassEnabled(true);	
 		selectButton.addClickHandler(new ClickHandler() {	
 			@Override
