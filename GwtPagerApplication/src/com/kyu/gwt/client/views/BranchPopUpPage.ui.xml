@@ -3,8 +3,8 @@
 	xmlns:g="urn:import:com.google.gwt.user.client.ui">
     <ui:style>
         .panel {
-            background-color: windowframe;
-            border: 5px;
+            background-color: #C0C0C0;
+            border-top: 2px outset;
             border-color: black;
         }
     </ui:style>

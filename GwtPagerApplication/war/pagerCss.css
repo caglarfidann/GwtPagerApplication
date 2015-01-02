@@ -3,8 +3,8 @@ body{
    background-color: window;
 }
 .gwt-Bold-DialogBox{
-	border:5px;
-	background-color:gray;
+	border:2px outset;
+	background-color:highlight;
 	border-color:black;
 	font-weight: bolder;
 }

@@ -8,7 +8,7 @@ public class Customer {
 	private String CustomerSurname;
 	private String CustomerMail;
 	private String CustomerBranch;
-	
+	ArrayList<Customer> customerList=new ArrayList<Customer>();
 	public String getCustomerID() {
 		return CustomerID;
 	}
@@ -39,6 +39,14 @@ public class Customer {
 	public void setCustomerBranch(String customerBranch) {
 		CustomerBranch = customerBranch;
 	}
+	
+	public ArrayList<Customer> getCustomerList() {
+		return customerList;
+	}
+	public void setCustomerList(ArrayList<Customer> customerList) {
+		this.customerList = customerList;
+	}
+	
 	public ArrayList<Customer> addCustomerList(){
 		Customer customer;
 		ArrayList<Customer> Customer_temp=new ArrayList<Customer>();
@@ -50,6 +58,7 @@ public class Customer {
 			customer.setCustomerMail("N"+i+"S"+i+"@gmail.com");
 			Customer_temp.add(customer);
 		}
+		customerList.addAll(Customer_temp);
 		return Customer_temp;
 	}
 	

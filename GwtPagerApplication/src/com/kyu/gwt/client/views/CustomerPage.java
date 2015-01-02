@@ -16,11 +16,13 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.AbsolutePanel;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTMLPanel;
+import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.view.client.ListDataProvider;
+import com.kyu.gwt.client.presenters.CustomerDetailPresenter;
 import com.kyu.gwt.client.presenters.CustomerPresenter;
+import com.kyu.gwt.client.presenters.Presenter;
 import com.kyu.gwt.shared.Customer;
-import com.sun.org.apache.xpath.internal.operations.Div;
 
 public class CustomerPage extends Composite implements
 		CustomerPresenter.Display {
@@ -56,7 +58,7 @@ public class CustomerPage extends Composite implements
 	}
 
 	@Override
-	public void fillCustomerTable(ArrayList<Customer> customerList) {
+	public void fillCustomerTable(final ArrayList<Customer> customerList) {
 		// TODO Auto-generated method stub
 		TextColumn<Customer> CustomerID = new TextColumn<Customer>() {
 			@Override
@@ -114,7 +116,14 @@ public class CustomerPage extends Composite implements
 			@Override
 			public void update(int index, Customer object, String value) {
 				SelectedCustomer=object;
-				Window.alert(SelectedCustomer.getCustomerBranch());
+				if (SelectedCustomer.getCustomerBranch()!=null) {
+					Presenter presenter=new CustomerDetailPresenter(customerList,SelectedCustomer, new CustomerDetailPage());
+					presenter.go(RootPanel.get());	
+				}
+				else{
+					Window.alert("Lutfen Bir Sube Seciniz!!");
+				}
+				
 			}
 		});
 		customerCellTable.addColumn(CustomerID, "Customer ID");

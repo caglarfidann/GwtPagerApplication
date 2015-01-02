@@ -31,7 +31,7 @@ public class BranchPopUpPage extends DialogBox {
     Label branchLabel=new Label("Branch: ");
     ListBox branchList=new ListBox(false);
     Button selectButton=new Button("Select");
-    Button backButton=new Button("Back");
+    Button backButton=new Button("Close");
     Label resultLabel=new Label();
 	public BranchPopUpPage(Customer customer) {
 		setWidget(uiBinder.createAndBindUi(this));
@@ -56,6 +56,7 @@ public class BranchPopUpPage extends DialogBox {
 		absolutePanel.add(selectButton,60,70);
 		absolutePanel.add(backButton,160,70);
 		absolutePanel.add(resultLabel,70,100);
+		box.setAnimationEnabled(true);
 		box.setAutoHideEnabled(false);	
 		box.setGlassEnabled(true);	
 		selectButton.addClickHandler(new ClickHandler() {	
