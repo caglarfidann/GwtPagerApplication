@@ -7,7 +7,6 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.AbsolutePanel;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DialogBox;
@@ -46,7 +45,7 @@ public class BranchPopUpPage extends DialogBox {
 		box.center();
 		box.setStyleName("gwt-Bold-DialogBox");
 		box.setText("BRANCH");
-		absolutePanel.setSize("300px", "200px");
+		absolutePanel.setSize("400px", "250px");
 		absolutePanel.add(customerLabel,15,10);
 		customerText.setText(customer.getCustomerName()+" "+customer.getCustomerSurname());
 		absolutePanel.add(customerText,105,10);
